@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+
+# Virtual envs
+.venv/
+venv/
+env/
+ENV/
+
+# Env / secrets
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# SQLite transient files (keep xpts.db itself — that's the data layer for Vercel)
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Logs / scratch
+*.log
+*.tmp
+scratch/
+.cache/
+
+# Test artifacts
+.pytest_cache/
+.coverage
+htmlcov/
