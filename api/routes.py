@@ -516,7 +516,16 @@ def trigger_pipeline(
     skip_fbref: bool = Query(True),
     league: Optional[str] = Query(None),
 ):
-    """Trigger a full pipeline update in the background."""
+    """Trigger a full pipeline update in the background.
+
+    Disabled on Vercel — DB is read-only there. Pipeline runs in GH Actions
+    and commits db/xpts.db to the repo.
+    """
+    if db.READ_ONLY:
+        raise HTTPException(
+            status_code=503,
+            detail="Pipeline writes are disabled on Vercel. Trigger the GH Actions workflow instead.",
+        )
     from src.pipeline.update import run_full_update
 
     def _run():
